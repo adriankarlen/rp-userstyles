@@ -1,0 +1,561 @@
+/* ==UserStyle==
+@name           Rosé Pine for LinkedIn 
+@description    Soho vibes for LinkedIn
+@version        1.0.0
+@license        MIT
+@author         Adrian Karlén (https://github.com/adriankarlen/)
+@namespace      https://github.com/rose-pine/
+@homepageURL    https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/linkedin/rose-pine.user.css
+
+@preprocessor less
+@var select lightFlavor "Light Flavor" ["default:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkFlavor "Dark Flavor" ["default:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+==/UserStyle== */
+@-moz-document domain('www.linkedin.com') {
+    @rose-pine: {
+        @default: {
+            @base: #191724;
+            @surface: #1f1d2e;
+            @overlay: #26233a;
+            @muted: #6e6a86;
+            @subtle: #908caa;
+            @text: #e0def4;
+            @love: #eb6f92;
+            @gold: #f6c177;
+            @rose: #ebbcba;
+            @pine: #31748f;
+            @foam: #9ccfd8;
+            @iris: #c4a7e7;
+            @highlightLow: #21202e;
+            @highlightMed: #403d52;
+            @highlightHigh: #524f67;
+        };
+        @moon: {
+            @base: #232136;
+            @surface: #2a273f;
+            @overlay: #393552;
+            @muted: #6e6a86;
+            @subtle: #908caa;
+            @text: #e0def4;
+            @love: #eb6f92;
+            @gold: #f6c177;
+            @rose: #ea9a97;
+            @pine: #3e8fb0;
+            @foam: #9ccfd8;
+            @iris: #c4a7e7;
+            @highlightLow: #2a283e;
+            @highlightMed: #44415a;
+            @highlightHigh: #56526e;
+        };
+        @dawn: {
+            @base: #faf4ed;
+            @surface: #fffaf3;
+            @overlay: #f2e9e1;
+            @muted: #9893a5;
+            @subtle: #797593;
+            @text: #575279;
+            @love: #b4637a;
+            @gold: #ea9d34;
+            @rose: #d7827e;
+            @pine: #286983;
+            @foam: #56949f;
+            @iris: #907aa9;
+            @highlightLow: #f4ede8;
+            @highlightMed: #dfdad9;
+            @highlightHigh: #cecacd;
+        };
+    };
+
+    #rose-pine(@lookup, @accent) {
+        @base: @rose-pine[@@lookup][@base];
+        @surface: @rose-pine[@@lookup][@surface];
+        @overlay: @rose-pine[@@lookup][@overlay];
+        @muted: @rose-pine[@@lookup][@muted];
+        @subtle: @rose-pine[@@lookup][@subtle];
+        @text: @rose-pine[@@lookup][@text];
+        @love: @rose-pine[@@lookup][@love];
+        @gold: @rose-pine[@@lookup][@gold];
+        @rose: @rose-pine[@@lookup][@rose];
+        @pine: @rose-pine[@@lookup][@pine];
+        @foam: @rose-pine[@@lookup][@foam];
+        @iris: @rose-pine[@@lookup][@iris];
+        @highlightLow: @rose-pine[@@lookup][@highlightLow];
+        @highlightMed: @rose-pine[@@lookup][@highlightMed];
+        @highlightHigh: @rose-pine[@@lookup][@highlightHigh];
+        @accent-color: @rose-pine[@@lookup][@@accentColor];
+
+        --black: @highlightLow;
+        --black-a90: @highlightLow;
+        --black-a75: @highlightLow;
+        --black-a60: fadeout(@highlightLow, 40);
+        --black-a45: @highlightLow;
+        --black-a30: @highlightLow;
+        --black-a15: @highlightLow;
+        --black-a12: @highlightLow;
+        --black-a08: @highlightLow;
+        --black-a04: @highlightLow;
+        --black-a100: @highlightLow;
+
+        --white: @text;
+        --white-a06: @surface;
+        --white-a12: @surface;
+        --white-a18: @surface;
+        --white-a25: @surface;
+        --white-a30: @text;
+        --white-a40: @text;
+        --white-a45: @text;
+        --white-a55: @text;
+        --white-a60: @subtle;
+        --white-a70: @text;
+        --white-a75: @text;
+        --white-a85: @text;
+        --white-a90: @text;
+        --white-a100: @text;
+
+        --blue-10: @foam;
+        --blue-20: @foam;
+        --blue-30: @foam;
+        --blue-40: @foam;
+        --blue-50: @foam;
+        --blue-60: @foam;
+        --blue-70: @foam;
+        --blue-80: @foam;
+        --blue-90: @foam;
+        --blue-100: @foam;
+        --blue-50-a20: fadeout(@foam, 80);
+        --blue-50-a25: fadeout(@foam, 75);
+        --blue-50-a30: fadeout(@foam, 70);
+        --blue-50-a40: fadeout(@foam, 60);
+        --blue-60-a10: fadeout(@foam, 90);
+        --blue-60-a15: fadeout(@foam, 15);
+        --blue-60-a20: fadeout(@foam, 80);
+        --blue-60-a25: fadeout(@foam, 75);
+        --blue-60-a30: fadeout(@foam, 70);
+        --blue-60-a35: fadeout(@foam, 65);
+        --blue-60-a40: fadeout(@foam, 60);
+        --blue-60-a45: fadeout(@foam, 55);
+        --blue-70-a30: fadeout(@foam, 70);
+        --blue-70-a40: fadeout(@foam, 60);
+        --blue-70-a50: fadeout(@foam, 50);
+
+        --cool-gray-10: @highlightMed;
+        --cool-gray-20: @surface;
+        --cool-gray-30: @highlightMed;
+        --cool-gray-40: @highlightMed;
+        --cool-gray-50: @highlightMed;
+        --cool-gray-60: @highlightMed;
+        --cool-gray-70: @highlightMed;
+        --cool-gray-80: @surface;
+        --cool-gray-85: @highlightMed;
+        --cool-gray-90: @highlightMed;
+        --cool-gray-100: @highlightMed;
+        --cool-gray-60-a10: fadeout(@highlightMed, 90);
+        --cool-gray-60-a15: fadeout(@highlightMed, 85);
+        --cool-gray-60-a20: fadeout(@highlightMed, 80);
+        --cool-gray-60-a25: fadeout(@highlightMed, 75);
+        --cool-gray-60-a30: fadeout(@highlightMed, 70);
+        --cool-gray-60-a35: fadeout(@highlightMed, 65);
+
+        --warm-gray-10: @highlightHigh;
+        --warm-gray-20: @highlightHigh;
+        --warm-gray-30: @highlightHigh;
+        --warm-gray-40: @highlightHigh;
+        --warm-gray-50: @highlightHigh;
+        --warm-gray-60: @highlightHigh;
+        --warm-gray-70: @highlightHigh;
+        --warm-gray-80: @highlightHigh;
+        --warm-gray-90: @highlightHigh;
+        --warm-gray-100: @highlightHigh;
+        --warm-gray-60-a10: fadeout(@highlightHigh, 90);
+        --warm-gray-60-a15: fadeout(@highlightHigh, 85);
+        --warm-gray-60-a20: fadeout(@highlightHigh, 80);
+        --warm-gray-60-a25: fadeout(@highlightHigh, 75);
+        --warm-gray-60-a30: fadeout(@highlightHigh, 70);
+        --warm-gray-60-a35: fadeout(@highlightHigh, 65);
+
+        --warm-red-10: @love;
+        --warm-red-20: @love;
+        --warm-red-30: @love;
+        --warm-red-40: @love;
+        --warm-red-50: @love;
+        --warm-red-60: @love;
+        --warm-red-70: @love;
+        --warm-red-80: @love;
+        --warm-red-90: @love;
+        --warm-red-100: @love;
+        --warm-red-60-a10: fadeout(@love, 90);
+        --warm-red-60-a15: fadeout(@love, 85);
+        --warm-red-60-a20: fadeout(@love, 80);
+        --warm-red-60-a25: fadeout(@love, 75);
+        --warm-red-60-a30: fadeout(@love, 70);
+        --warm-red-60-a35: fadeout(@love, 65);
+
+        --teal-10: @pine;
+        --teal-20: @pine;
+        --teal-30: @pine;
+        --teal-40: @pine;
+        --teal-50: @pine;
+        --teal-60: @pine;
+        --teal-70: @pine;
+        --teal-80: @pine;
+        --teal-90: @pine;
+        --teal-100: @pine;
+        --teal-50-a30: fadein(@pine, 70);
+        --teal-60-a10: fadeout(@pine, 90);
+        --teal-60-a15: fadeout(@pine, 85);
+        --teal-60-a20: fadeout(@pine, 80);
+        --teal-60-a25: fadeout(@pine, 75);
+        --teal-60-a30: fadeout(@pine, 70);
+        --teal-60-a35: fadeout(@pine, 65);
+
+        --purple-10: @iris;
+        --purple-20: @iris;
+        --purple-30: @iris;
+        --purple-40: @iris;
+        --purple-50: @iris;
+        --purple-60: @iris;
+        --purple-70: @iris;
+        --purple-80: @iris;
+        --purple-90: @iris;
+        --purple-100: @iris;
+        --purple-40-a15: fadeout(@iris, 85);
+        --purple-60-a10: fadeout(@iris, 90);
+        --purple-60-a15: fadeout(@iris, 85);
+        --purple-60-a20: fadeout(@iris, 80);
+        --purple-60-a25: fadeout(@iris, 75);
+        --purple-60-a30: fadeout(@iris, 70);
+        --purple-60-a35: fadeout(@iris, 65);
+        --purple-70-a15: fadeout(@iris, 85);
+
+        --system-red-10: @love;
+        --system-red-20: @love;
+        --system-red-30: @love;
+        --system-red-40: @love;
+        --system-red-50: @love;
+        --system-red-60: @love;
+        --system-red-70: @love;
+        --system-red-80: @love;
+        --system-red-90: @love;
+        --system-red-100: @love;
+        --system-red-60-a10: fadeout(@love, 90);
+        --system-red-60-a15: fadeout(@love, 85);
+        --system-red-60-a20: fadeout(@love, 80);
+        --system-red-60-a25: fadeout(@love, 75);
+        --system-red-60-a30: fadeout(@love, 70);
+        --system-red-60-a35: fadeout(@love, 65);
+
+        --system-green-10: darken(@pine, 20);
+        --system-green-20: darken(@pine, 20);
+        --system-green-30: darken(@pine, 20);
+        --system-green-40: darken(@pine, 20);
+        --system-green-50: darken(@pine, 20);
+        --system-green-60: darken(@pine, 20);
+        --system-green-70: darken(@pine, 20);
+        --system-green-80: darken(@pine, 20);
+        --system-green-90: darken(@pine, 20);
+        --system-green-100: darken(@pine, 20);
+        --system-green-60-a10: fadeout(darken(@pine, 20), 90);
+        --system-green-60-a15: fadeout(darken(@pine, 20), 85);
+        --system-green-60-a20: fadeout(darken(@pine, 20), 80);
+        --system-green-60-a25: fadeout(darken(@pine, 20), 75);
+        --system-green-60-a30: fadeout(darken(@pine, 20), 70);
+        --system-green-60-a35: fadeout(darken(@pine, 20), 65);
+
+        --pink-10: @rose;
+        --pink-20: @rose;
+        --pink-30: @rose;
+        --pink-40: @rose;
+        --pink-50: @rose;
+        --pink-60: @rose;
+        --pink-70: @rose;
+        --pink-80: @rose;
+        --pink-90: @rose;
+        --pink-100: @rose;
+        --pink-60-a10: fadeout(@rose, 90);
+        --pink-60-a15: fadeout(@rose, 85);
+        --pink-60-a20: fadeout(@rose, 80);
+        --pink-60-a25: fadeout(@rose, 75);
+        --pink-60-a30: fadeout(@rose, 70);
+        --pink-60-a35: fadeout(@rose, 65);
+
+        --amber-10: @gold;
+        --amber-20: @gold;
+        --amber-30: @gold;
+        --amber-40: @gold;
+        --amber-50: @gold;
+        --amber-60: @gold;
+        --amber-70: @gold;
+        --amber-80: @gold;
+        --amber-90: @gold;
+        --amber-100: @gold;
+        --amber-30-a50: fadein(@gold, 50);
+        --amber-60-a10: fadeout(@gold, 90);
+        --amber-60-a15: fadeout(@gold, 85);
+        --amber-60-a20: fadeout(@gold, 80);
+        --amber-60-a25: fadeout(@gold, 75);
+        --amber-60-a30: fadeout(@gold, 70);
+        --amber-60-a35: fadeout(@gold, 65);
+
+        --copper-10: @rose;
+        --copper-20: @rose;
+        --copper-30: @rose;
+        --copper-40: @rose;
+        --copper-50: @rose;
+        --copper-60: @rose;
+        --copper-70: @rose;
+        --copper-80: @rose;
+        --copper-90: @rose;
+        --copper-100: @rose;
+        --copper-60-a10: fadeout(@rose, 90);
+        --copper-60-a15: fadeout(@rose, 85);
+        --copper-60-a20: fadeout(@rose, 80);
+        --copper-60-a25: fadeout(@rose, 75);
+        --copper-60-a30: fadeout(@rose, 70);
+        --copper-60-a35: fadeout(@rose, 65);
+
+        --green-10: @pine;
+        --green-20: @pine;
+        --green-30: @pine;
+        --green-40: @pine;
+        --green-50: @pine;
+        --green-60: @pine;
+        --green-70: @pine;
+        --green-80: @pine;
+        --green-90: @pine;
+        --green-100: @pine;
+        --green-60-a10: fadeout(@pine, 90);
+        --green-60-a15: fadeout(@pine, 85);
+        --green-60-a20: fadeout(@pine, 80);
+        --green-60-a25: fadeout(@pine, 75);
+        --green-60-a30: fadeout(@pine, 70);
+        --green-60-a35: fadeout(@pine, 65);
+
+        --sage-10: darken(@pine, 40);
+        --sage-20: darken(@pine, 40);
+        --sage-30: darken(@pine, 40);
+        --sage-40: darken(@pine, 40);
+        --sage-50: darken(@pine, 40);
+        --sage-60: darken(@pine, 40);
+        --sage-70: darken(@pine, 40);
+        --sage-80: darken(@pine, 40);
+        --sage-90: darken(@pine, 40);
+        --sage-100: darken(@pine, 40);
+        --sage-60-a10: fadeout(darken(@pine, 40), 90);
+        --sage-60-a15: fadeout(darken(@pine, 40), 85);
+        --sage-60-a20: fadeout(darken(@pine, 40), 80);
+        --sage-60-a25: fadeout(darken(@pine, 40), 75);
+        --sage-60-a30: fadeout(darken(@pine, 40), 70);
+        --sage-60-a35: fadeout(darken(@pine, 40), 65);
+
+        --lime-10: lighten(@pine, 20);
+        --lime-20: lighten(@pine, 20);
+        --lime-30: lighten(@pine, 20);
+        --lime-40: lighten(@pine, 20);
+        --lime-50: lighten(@pine, 20);
+        --lime-60: lighten(@pine, 20);
+        --lime-70: lighten(@pine, 20);
+        --lime-80: lighten(@pine, 20);
+        --lime-90: lighten(@pine, 20);
+        --lime-100: lighten(@pine, 20);
+        --lime-60-a10: fadeout(lighten(@pine, 20), 90);
+        --lime-60-a15: fadeout(lighten(@pine, 20), 85);
+        --lime-60-a20: fadeout(lighten(@pine, 20), 80);
+        --lime-60-a25: fadeout(lighten(@pine, 20), 75);
+        --lime-60-a30: fadeout(lighten(@pine, 20), 70);
+        --lime-60-a35: fadeout(lighten(@pine, 20), 65);
+
+        --camo-10: @accent-color;
+        --camo-20: @accent-color;
+        --camo-30: @accent-color;
+        --camo-40: @accent-color;
+        --camo-50: @accent-color;
+        --camo-60: @accent-color;
+        --camo-70: @accent-color;
+        --camo-80: @accent-color;
+        --camo-90: @accent-color;
+        --camo-100: @accent-color;
+        --camo-60-a10: fadeout(@accent-color, 90);
+        --camo-60-a15: fadeout(@accent-color, 85);
+        --camo-60-a20: fadeout(@accent-color, 80);
+        --camo-60-a25: fadeout(@accent-color, 75);
+        --camo-60-a30: fadeout(@accent-color, 70);
+        --camo-60-a35: fadeout(@accent-color, 65);
+
+        --smoke-10: @overlay;
+        --smoke-20: @overlay;
+        --smoke-30: @overlay;
+        --smoke-40: @overlay;
+        --smoke-50: @overlay;
+        --smoke-60: @overlay;
+        --smoke-70: @overlay;
+        --smoke-80: @overlay;
+        --smoke-90: @overlay;
+        --smoke-100: @overlay;
+        --smoke-60-a10: fadeout(@overlay, 90);
+        --smoke-60-a15: fadeout(@overlay, 85);
+        --smoke-60-a20: fadeout(@overlay, 80);
+        --smoke-60-a25: fadeout(@overlay, 75);
+        --smoke-60-a30: fadeout(@overlay, 70);
+        --smoke-60-a35: fadeout(@overlay, 65);
+
+        --lavender-10: @iris;
+        --lavender-20: @iris;
+        --lavender-30: @iris;
+        --lavender-40: @iris;
+        --lavender-50: @iris;
+        --lavender-60: @iris;
+        --lavender-70: @iris;
+        --lavender-80: @iris;
+        --lavender-90: @iris;
+        --lavender-100: @iris;
+        --lavender-60-a10: fadeout(@iris, 90);
+        --lavender-60-a15: fadeout(@iris, 85);
+        --lavender-60-a20: fadeout(@iris, 80);
+        --lavender-60-a25: fadeout(@iris, 75);
+        --lavender-60-a30: fadeout(@iris, 70);
+        --lavender-60-a35: fadeout(@iris, 65);
+
+        --mauve-10: @iris;
+        --mauve-20: @iris;
+        --mauve-30: @iris;
+        --mauve-40: @iris;
+        --mauve-50: @iris;
+        --mauve-60: @iris;
+        --mauve-70: @iris;
+        --mauve-80: @iris;
+        --mauve-90: @iris;
+        --mauve-100: @iris;
+        --mauve-60-a10: fadeout(@iris, 90);
+        --mauve-60-a15: fadeout(@iris, 85);
+        --mauve-60-a20: fadeout(@iris, 80);
+        --mauve-60-a25: fadeout(@iris, 75);
+        --mauve-60-a30: fadeout(@iris, 70);
+        --mauve-60-a35: fadeout(@iris, 65);
+        --mauve-80-a50: fadeout(@iris, 50);
+
+        --system-gray-10: @surface;
+        --system-gray-20: @surface;
+        --system-gray-30: @surface;
+        --system-gray-40: @surface;
+        --system-gray-50: @surface;
+        --system-gray-60: @surface;
+        --system-gray-70: @surface;
+        --system-gray-80: @surface;
+        --system-gray-90: @surface;
+        --system-gray-100: @surface;
+        --system-gray-60-a10: fadeout(@surface, 90);
+        --system-gray-60-a15: fadeout(@surface, 85);
+        --system-gray-60-a20: fadeout(@surface, 80);
+        --system-gray-60-a25: fadeout(@surface, 75);
+        --system-gray-60-a30: fadeout(@surface, 70);
+        --system-gray-60-a35: fadeout(@surface, 65);
+        --system-gray-60-a40: fadeout(@surface, 60);
+        --system-gray-60-a45: fadeout(@surface, 55);
+
+        --system-orange-10: @gold;
+        --system-orange-20: @gold;
+        --system-orange-30: @gold;
+        --system-orange-40: @gold;
+        --system-orange-50: @gold;
+        --system-orange-60: @gold;
+        --system-orange-70: @gold;
+        --system-orange-80: @gold;
+        --system-orange-90: @gold;
+        --system-orange-100: @gold;
+        --system-orange-60-a10: fadeout(@gold, 90);
+        --system-orange-60-a15: fadeout(@gold, 85);
+        --system-orange-60-a20: fadeout(@gold, 80);
+        --system-orange-60-a25: fadeout(@gold, 75);
+        --system-orange-60-a30: fadeout(@gold, 70);
+        --system-orange-60-a35: fadeout(@gold, 65);
+
+        /* quality of life changes */
+        --color-border-low-emphasis: @surface;
+
+        /* more accent */
+        --voyager-color-background-badge-notification: @accent-color;
+        --color-signal-positive: @accent-color;
+        --color-checked: @accent-color;
+        --color-checked-hover: @accent-color;
+        --color-checked-active: @accent-color;
+
+        & when not (@lookup =latte) {
+            --color-text-on-dark: @highlightLow;
+            --color-element: @highlightLow;
+        }
+
+        & when (@lookup =latte) {
+            --black: @text;
+            --black-a90: @text;
+            --black-a75: @text;
+            --black-a45: @text;
+            --black-a30: @text;
+            --black-a60: @subtle;
+            --black-a15: @text;
+            --black-a04: @text;
+            --black-a100: @text;
+
+            --color-background-scrim: fadeout(@highlightLow, 60);
+
+            --white: @highlightMed;
+            --white-a06: @surface;
+            --white-a12: @surface;
+            --white-a18: @surface;
+            --white-a25: @surface;
+            --white-a30: @highlightMed;
+            --white-a40: @highlightMed;
+            --white-a45: @highlightMed;
+            --white-a55: @highlightMed;
+            --white-a60: @subtle;
+            --white-a70: @highlightMed;
+            --white-a75: @highlightMed;
+            --white-a85: @highlightMed;
+            --white-a90: @highlightMed;
+            --white-a100: @highlightMed;
+
+            --warm-gray-10: @base;
+            --warm-gray-20: @base;
+            --warm-gray-30: @base;
+            --warm-gray-40: @base;
+            --warm-gray-50: @base;
+            --warm-gray-60: @base;
+            --warm-gray-70: @base;
+            --warm-gray-80: @base;
+            --warm-gray-90: @base;
+            --warm-gray-100: @base;
+            --warm-gray-60-a10: fadeout(@base, 90);
+            --warm-gray-60-a15: fadeout(@base, 85);
+            --warm-gray-60-a20: fadeout(@base, 80);
+            --warm-gray-60-a25: fadeout(@base, 75);
+            --warm-gray-60-a30: fadeout(@base, 70);
+            --warm-gray-60-a35: fadeout(@base, 65);
+        }
+
+        .share-promoted-detour-button-legacy {
+            background-color: @accent-color !important;
+        }
+        .share-promoted-detour-button {
+            color: @highlightLow !important;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        #rose-pine(@lightFlavor, @accentColor);
+    }
+    @media (prefers-color-scheme: dark) {
+        .theme--dark,
+        .theme--mercado-dark {
+            #rose-pine(@darkFlavor, @accentColor);
+        }
+    } // manually set colorscheme
+    :root {
+        #rose-pine(@lightFlavor, @accentColor);
+    }
+    .theme--dark,
+    .theme--mercado-dark {
+        #rose-pine(@darkFlavor, @accentColor);
+    }
+}
+// vim:ft=less
